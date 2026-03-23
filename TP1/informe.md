@@ -1,5 +1,4 @@
-# Sistemas de Computación  
-## Trabajo Práctico 1: Rendimiento  
+# Trabajo Práctico 1: Rendimiento  
 
 ## Introducción  
 
