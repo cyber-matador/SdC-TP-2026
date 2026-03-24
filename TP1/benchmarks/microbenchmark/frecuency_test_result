@@ -1,0 +1,9 @@
+Prueba de tiempo con 80Mhz
+----------------
+Tiempo con enteros: 6.91 s
+Tiempo con floats: 8.17 s
+
+Prueba de tiempo con 160Mhz
+----------------
+Tiempo con enteros: 13.91 s
+Tiempo con floats: 16.43 s
