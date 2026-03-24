@@ -1,0 +1,3 @@
+Freq: 250 MHz
+Int time: 1200036 us
+Float time: 1800021 us
