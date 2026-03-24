@@ -9,13 +9,15 @@
 
 #include "benchmark.h"
 
+// cambiar a 80 / 160 / 240 para pruebas
 // #define CPU_FREQ_MHZ 80
-// #define CPU_FREQ_MHZ 160
-#define CPU_FREQ_MHZ 240  // cambiar a 80 / 160 / 240 para pruebas
+#define CPU_FREQ_MHZ 160
+// #define CPU_FREQ_MHZ 240  
 
 void benchmark_task(void *arg) {
     int64_t start, end;
-    
+
+    printf("Starting benchmark with CPU frequency: %d MHz\n", CPU_FREQ_MHZ);
     for (int i = 0; i < 5; i++) {
         // Test enteros
         start = esp_timer_get_time();
@@ -30,6 +32,7 @@ void benchmark_task(void *arg) {
         printf("FLOAT,%lld\n", end - start);
     }
 
+    printf("Benchmark completed with CPU frequency: %d MHz\n", CPU_FREQ_MHZ);
     vTaskDelete(NULL);
 }
 

@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 
-#define ITERATIONS 200000000
+#define ITERATIONS 50000000
 
 volatile uint32_t int_result;
 volatile float float_result;
