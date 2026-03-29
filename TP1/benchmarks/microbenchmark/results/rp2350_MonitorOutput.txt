@@ -1,3 +1,7 @@
-Freq: 250 MHz
-Int time: 1200036 us
-Float time: 1800021 us
+RP2350@160MHz
+Tiempo con enteros: 6.875 s
+Tiempo con floats: 6.875 s
+
+RP2350@80MHz
+Tiempo con enteros: 13.750 s
+Tiempo con floats: 13.750 s
