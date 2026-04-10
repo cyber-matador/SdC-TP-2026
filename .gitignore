@@ -10,3 +10,11 @@
 .vscode/
 .idea/
 .DS_Store
+
+# Archivos compilados C
+*.o
+*.so
+
+# Python
+venv/
+__pycache__/
