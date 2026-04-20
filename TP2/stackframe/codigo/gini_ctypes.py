@@ -2,7 +2,7 @@ from gini_api import obtener_gini_argentina
 import ctypes
 
 # cargar librería compartida
-lib = ctypes.CDLL("./libprocesar.so")
+lib = ctypes.CDLL("./build/libprocesar.so")
 
 # definir tipos
 lib.procesar.argtypes = [ctypes.c_float]
