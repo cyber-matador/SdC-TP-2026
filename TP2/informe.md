@@ -53,7 +53,11 @@ Python → C → ASM → Resultado
 ---
 
 # 4. Iteración 1 - Implementación en C
+En esta primera iteración se desarrolló la lógica completa en lenguaje C con el objetivo de validar el funcionamiento del sistema antes de migrar a ensamblador.
 
+La función principal procesar recibe un valor de tipo float, realiza un truncamiento hacia cero para convertirlo a entero y luego incrementa el resultado en una unidad.
+
+Esta implementación permite verificar el comportamiento esperado de manera sencilla, aprovechando la abstracción del lenguaje C.
 
 
 ## Descripción
@@ -64,11 +68,69 @@ Python → C → ASM → Resultado
 
 ## Código relevante
 
-```c
-// Código
-```
+#include "procesar.h"
+
+int procesar(float x) {
+    int valor = (int)x;  // truncamiento hacia cero
+    return valor + 1;
+}
+
+#ifndef PROCESAR_H
+#define PROCESAR_H
+
+int procesar(float x);
+
+#endif
+
+#include <stdio.h>
+
+int procesar(float x);
+
+int main() {
+    float valores[] = {3.7, 2.1, -1.9, 0.0};
+
+    for (int i = 0; i < 4; i++) {
+        int r = procesar(valores[i]);
+        printf("x = %.2f → resultado = %d\n", valores[i], r);
+    }
+
+    return 0;
+}
+
+| Entrada | Truncamiento | Resultado |
+|:-------:|:------------:|:---------:|
+| 3.7     | 3            | 4         |
+| 2.1     | 2            | 3         |
+| -1.9    | -1           | 0         |
+| 0.0     | 0            | 1         |
 
 # 5. Iteración 2 - Implementación en Assembler
+
+En esta iteración se reemplazó la implementación en C por una versión equivalente en ensamblador para arquitectura x86-64, manteniendo la misma interfaz de la función.
+
+El objetivo fue comprender cómo se implementan operaciones simples a bajo nivel y cómo se respetan las convenciones de llamada del sistema.
+
+Se utilizó la convención System V AMD64 ABI, donde:
+
+El argumento float se recibe en el registro %xmm0
+El valor de retorno (int) se devuelve en %eax
+
+## Código relevante
+.section .text
+.globl procesar
+.type procesar, @function
+
+procesar:
+    cvttss2si %xmm0, %eax   # float → int (truncamiento)
+    addl $1, %eax           # suma 1
+    ret
+
+.size procesar, .-procesar
+
+cvttss2si: convierte un float a entero truncando hacia cero
+addl: suma un valor inmediato al registro
+ret: retorna al programa llamador
+
 
 # 6. Stackframe y convención de llamadas
 
