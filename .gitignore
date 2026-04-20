@@ -12,6 +12,7 @@
 .DS_Store
 
 # Archivos compilados C
+build/
 *.o
 *.so
 
